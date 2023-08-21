@@ -49,27 +49,25 @@ const page = () => {
 
   // on page load get data from server http://localhost:3000/api/v1/dashboard get request
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/api/v1/dashboard/${userId}`)
-      .then((res) => {
-        console.log(res.data);
+    axios.get(`${process.env.API_URL}/dashboard/${userId}`).then((res) => {
+      console.log(res.data);
 
-        // handle null values
-        // setData(res.data.devices);
-        // setDeviceApps(res.data.deviceApps.appList);
-        // setDeviceContacts(res.data.deviceContacts.contacts);
-        // setDeviceEmails(res.data.deviceEmails);
+      // handle null values
+      // setData(res.data.devices);
+      // setDeviceApps(res.data.deviceApps.appList);
+      // setDeviceContacts(res.data.deviceContacts.contacts);
+      // setDeviceEmails(res.data.deviceEmails);
 
-        // handle null values
-        setData(res.data?.devices ? res.data.devices : []);
+      // handle null values
+      setData(res.data?.devices ? res.data.devices : []);
 
-        setDeviceApps(res.data?.deviceApps ? res.data.deviceApps.appList : []);
+      setDeviceApps(res.data?.deviceApps ? res.data.deviceApps.appList : []);
 
-        setDeviceContacts(
-          res.data?.deviceContacts ? res.data.deviceContacts.contacts : []
-        );
-        setDeviceEmails(res.data.deviceEmails ? res.data.deviceEmails : []);
-      });
+      setDeviceContacts(
+        res.data?.deviceContacts ? res.data.deviceContacts.contacts : []
+      );
+      setDeviceEmails(res.data.deviceEmails ? res.data.deviceEmails : []);
+    });
   }, []);
 
   return (

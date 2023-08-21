@@ -42,7 +42,7 @@ const page = () => {
   // on page load get data from server http://localhost:3000/api/v1/dashboard get request
   useEffect(() => {
     // use axios to get data from server
-    axios.get("http://localhost:3000/api/v1/dashboard").then((res) => {
+    axios.get(`${process.env.API_URL}/dashboard`).then((res) => {
       console.log(res.data.devices);
       setData(res.data.devices);
     });
